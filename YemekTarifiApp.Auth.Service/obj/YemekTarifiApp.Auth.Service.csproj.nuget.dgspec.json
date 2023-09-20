@@ -1,0 +1,339 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\Projects\\MyProjects\\YemekTarifiApp\\YemekTarifiApp.Auth.Service\\YemekTarifiApp.Auth.Service.csproj": {}
+  },
+  "projects": {
+    "E:\\Projects\\MyProjects\\YemekTarifiApp\\YemekTarifiApp.Auth.Core\\YemekTarifiApp.Auth.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Projects\\MyProjects\\YemekTarifiApp\\YemekTarifiApp.Auth.Core\\YemekTarifiApp.Auth.Core.csproj",
+        "projectName": "YemekTarifiApp.Auth.Core",
+        "projectPath": "E:\\Projects\\MyProjects\\YemekTarifiApp\\YemekTarifiApp.Auth.Core\\YemekTarifiApp.Auth.Core.csproj",
+        "packagesPath": "C:\\Users\\karak\\.nuget\\packages\\",
+        "outputPath": "E:\\Projects\\MyProjects\\YemekTarifiApp\\YemekTarifiApp.Auth.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\karak\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.Extensions.Identity.Stores": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.305\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\Projects\\MyProjects\\YemekTarifiApp\\YemekTarifiApp.Auth.Repository\\YemekTarifiApp.Auth.Repository.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Projects\\MyProjects\\YemekTarifiApp\\YemekTarifiApp.Auth.Repository\\YemekTarifiApp.Auth.Repository.csproj",
+        "projectName": "YemekTarifiApp.Auth.Repository",
+        "projectPath": "E:\\Projects\\MyProjects\\YemekTarifiApp\\YemekTarifiApp.Auth.Repository\\YemekTarifiApp.Auth.Repository.csproj",
+        "packagesPath": "C:\\Users\\karak\\.nuget\\packages\\",
+        "outputPath": "E:\\Projects\\MyProjects\\YemekTarifiApp\\YemekTarifiApp.Auth.Repository\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\karak\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "E:\\Projects\\MyProjects\\YemekTarifiApp\\YemekTarifiApp.Auth.Core\\YemekTarifiApp.Auth.Core.csproj": {
+                "projectPath": "E:\\Projects\\MyProjects\\YemekTarifiApp\\YemekTarifiApp.Auth.Core\\YemekTarifiApp.Auth.Core.csproj"
+              },
+              "E:\\Projects\\MyProjects\\YemekTarifiApp\\YemekTarifiApp.Core\\YemekTarifiApp.Core.csproj": {
+                "projectPath": "E:\\Projects\\MyProjects\\YemekTarifiApp\\YemekTarifiApp.Core\\YemekTarifiApp.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.305\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\Projects\\MyProjects\\YemekTarifiApp\\YemekTarifiApp.Auth.Service\\YemekTarifiApp.Auth.Service.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Projects\\MyProjects\\YemekTarifiApp\\YemekTarifiApp.Auth.Service\\YemekTarifiApp.Auth.Service.csproj",
+        "projectName": "YemekTarifiApp.Auth.Service",
+        "projectPath": "E:\\Projects\\MyProjects\\YemekTarifiApp\\YemekTarifiApp.Auth.Service\\YemekTarifiApp.Auth.Service.csproj",
+        "packagesPath": "C:\\Users\\karak\\.nuget\\packages\\",
+        "outputPath": "E:\\Projects\\MyProjects\\YemekTarifiApp\\YemekTarifiApp.Auth.Service\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\karak\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "E:\\Projects\\MyProjects\\YemekTarifiApp\\YemekTarifiApp.Auth.Repository\\YemekTarifiApp.Auth.Repository.csproj": {
+                "projectPath": "E:\\Projects\\MyProjects\\YemekTarifiApp\\YemekTarifiApp.Auth.Repository\\YemekTarifiApp.Auth.Repository.csproj"
+              },
+              "E:\\Projects\\MyProjects\\YemekTarifiApp\\YemekTarifiApp.Repository\\YemekTarifiApp.Repository.csproj": {
+                "projectPath": "E:\\Projects\\MyProjects\\YemekTarifiApp\\YemekTarifiApp.Repository\\YemekTarifiApp.Repository.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.305\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\Projects\\MyProjects\\YemekTarifiApp\\YemekTarifiApp.Core\\YemekTarifiApp.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Projects\\MyProjects\\YemekTarifiApp\\YemekTarifiApp.Core\\YemekTarifiApp.Core.csproj",
+        "projectName": "YemekTarifiApp.Core",
+        "projectPath": "E:\\Projects\\MyProjects\\YemekTarifiApp\\YemekTarifiApp.Core\\YemekTarifiApp.Core.csproj",
+        "packagesPath": "C:\\Users\\karak\\.nuget\\packages\\",
+        "outputPath": "E:\\Projects\\MyProjects\\YemekTarifiApp\\YemekTarifiApp.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\karak\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.305\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\Projects\\MyProjects\\YemekTarifiApp\\YemekTarifiApp.Repository\\YemekTarifiApp.Repository.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Projects\\MyProjects\\YemekTarifiApp\\YemekTarifiApp.Repository\\YemekTarifiApp.Repository.csproj",
+        "projectName": "YemekTarifiApp.Repository",
+        "projectPath": "E:\\Projects\\MyProjects\\YemekTarifiApp\\YemekTarifiApp.Repository\\YemekTarifiApp.Repository.csproj",
+        "packagesPath": "C:\\Users\\karak\\.nuget\\packages\\",
+        "outputPath": "E:\\Projects\\MyProjects\\YemekTarifiApp\\YemekTarifiApp.Repository\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\karak\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "E:\\Projects\\MyProjects\\YemekTarifiApp\\YemekTarifiApp.Core\\YemekTarifiApp.Core.csproj": {
+                "projectPath": "E:\\Projects\\MyProjects\\YemekTarifiApp\\YemekTarifiApp.Core\\YemekTarifiApp.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.0-preview.4.23259.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.0-preview.4.23259.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.8, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.305\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

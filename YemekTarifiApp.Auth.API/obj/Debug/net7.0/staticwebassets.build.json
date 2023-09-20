@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "6zV5r0h5b4pgqST2XsS/KYrYWG1t5HecU3bC1N3wZGs=",
+  "Source": "YemekTarifiApp.Auth.API",
+  "BasePath": "_content/YemekTarifiApp.Auth.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

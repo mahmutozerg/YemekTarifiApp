@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\YemekTarifiApp.Auth.Repository\YemekTarifiApp.Auth.Repository.csproj" />
+      <ProjectReference Include="..\YemekTarifiApp.Repository\YemekTarifiApp.Repository.csproj" />
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YemekTarifiApp.API", "YemekTarifiApp.API\YemekTarifiApp.API.csproj", "{009B0CE1-4B71-453C-AD08-FFA5E7071DF8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YemekTarifiApp.Service", "YemekTarifiApp.Service\YemekTarifiApp.Service.csproj", "{5E391EE5-A195-4359-B4BB-8D453701EEC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YemekTarifiApp.Repository", "YemekTarifiApp.Repository\YemekTarifiApp.Repository.csproj", "{B42007FF-1FE0-481B-BCFB-12C415CAD808}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YemekTarifiApp.Core", "YemekTarifiApp.Core\YemekTarifiApp.Core.csproj", "{F9845146-0B9B-4B14-AA44-349C4FABCAE0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Authentication", "Authentication", "{C050D585-2099-49CC-80B8-A69DC36FE9F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YemekTarifiApp.Auth.API", "YemekTarifiApp.Auth.API\YemekTarifiApp.Auth.API.csproj", "{826725FA-64FB-4F80-8023-2B6C2E9A4656}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YemekTarifiApp.Auth.Repository", "YemekTarifiApp.Auth.Repository\YemekTarifiApp.Auth.Repository.csproj", "{DDF6E323-84A0-4628-A9DF-5546D38AA6C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YemekTarifiApp.Auth.Core", "YemekTarifiApp.Auth.Core\YemekTarifiApp.Auth.Core.csproj", "{6535C5E2-B40E-42F5-8592-4BEF7C560428}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YemekTarifiApp.Auth.Service", "YemekTarifiApp.Auth.Service\YemekTarifiApp.Auth.Service.csproj", "{EB927E4C-D739-49F6-B202-06C5E984D5BF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{009B0CE1-4B71-453C-AD08-FFA5E7071DF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{009B0CE1-4B71-453C-AD08-FFA5E7071DF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{009B0CE1-4B71-453C-AD08-FFA5E7071DF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{009B0CE1-4B71-453C-AD08-FFA5E7071DF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E391EE5-A195-4359-B4BB-8D453701EEC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E391EE5-A195-4359-B4BB-8D453701EEC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E391EE5-A195-4359-B4BB-8D453701EEC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E391EE5-A195-4359-B4BB-8D453701EEC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B42007FF-1FE0-481B-BCFB-12C415CAD808}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B42007FF-1FE0-481B-BCFB-12C415CAD808}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B42007FF-1FE0-481B-BCFB-12C415CAD808}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B42007FF-1FE0-481B-BCFB-12C415CAD808}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9845146-0B9B-4B14-AA44-349C4FABCAE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9845146-0B9B-4B14-AA44-349C4FABCAE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9845146-0B9B-4B14-AA44-349C4FABCAE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9845146-0B9B-4B14-AA44-349C4FABCAE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{826725FA-64FB-4F80-8023-2B6C2E9A4656}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{826725FA-64FB-4F80-8023-2B6C2E9A4656}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{826725FA-64FB-4F80-8023-2B6C2E9A4656}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{826725FA-64FB-4F80-8023-2B6C2E9A4656}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDF6E323-84A0-4628-A9DF-5546D38AA6C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDF6E323-84A0-4628-A9DF-5546D38AA6C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDF6E323-84A0-4628-A9DF-5546D38AA6C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDF6E323-84A0-4628-A9DF-5546D38AA6C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6535C5E2-B40E-42F5-8592-4BEF7C560428}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6535C5E2-B40E-42F5-8592-4BEF7C560428}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6535C5E2-B40E-42F5-8592-4BEF7C560428}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6535C5E2-B40E-42F5-8592-4BEF7C560428}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB927E4C-D739-49F6-B202-06C5E984D5BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB927E4C-D739-49F6-B202-06C5E984D5BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB927E4C-D739-49F6-B202-06C5E984D5BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB927E4C-D739-49F6-B202-06C5E984D5BF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{826725FA-64FB-4F80-8023-2B6C2E9A4656} = {C050D585-2099-49CC-80B8-A69DC36FE9F2}
+		{DDF6E323-84A0-4628-A9DF-5546D38AA6C2} = {C050D585-2099-49CC-80B8-A69DC36FE9F2}
+		{6535C5E2-B40E-42F5-8592-4BEF7C560428} = {C050D585-2099-49CC-80B8-A69DC36FE9F2}
+		{EB927E4C-D739-49F6-B202-06C5E984D5BF} = {C050D585-2099-49CC-80B8-A69DC36FE9F2}
+	EndGlobalSection
+EndGlobal
