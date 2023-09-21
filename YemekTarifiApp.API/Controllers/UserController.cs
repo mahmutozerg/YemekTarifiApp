@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using YemekTarifiApp.Core.Services;
@@ -24,8 +25,9 @@ public class UserController:CustomBaseController
     }
 
     [HttpDelete]
-    public async Task<IActionResult> Remove(string userId)
+    public async Task<IActionResult> Remove()
     {
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         var response = await _userAppService.Remove(userId);
 
         return CreateActionResult(response);

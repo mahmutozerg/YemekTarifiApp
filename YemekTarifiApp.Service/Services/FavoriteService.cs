@@ -12,13 +12,11 @@ namespace YemekTarifiApp.Service.Services;
 public class FavoriteService:GenericService<Favorite>,IFavoriteService
 {
     private readonly IFavoriteRepository _favoriteRepository;
-    private readonly IRecipeRepository _recipeRepository;
     private readonly IUnitOfWork _unitOfWork;
     private readonly IGenericRepository<User> _userRepository;
-    public FavoriteService(IGenericRepository<Favorite?> repository, IUnitOfWork unitOfWork, IRecipeRepository recipeRepository, IGenericRepository<User> userRepository, IFavoriteRepository favoriteRepository) : base(repository, unitOfWork)
+    public FavoriteService(IGenericRepository<Favorite?> repository, IUnitOfWork unitOfWork, IGenericRepository<User> userRepository, IFavoriteRepository favoriteRepository) : base(repository, unitOfWork)
     {
         _unitOfWork = unitOfWork;
-        _recipeRepository = recipeRepository;
         _userRepository = userRepository;
         _favoriteRepository = favoriteRepository;
     }
@@ -26,10 +24,10 @@ public class FavoriteService:GenericService<Favorite>,IFavoriteService
 
     public async Task<CustomResponseNoDataDto> ToggleFavorites(string recipeId, string userId)
     {
-        var user = await _userRepository.Where(x => x.Id == userId && !x.IsDeleted).FirstOrDefaultAsync();
-        var favoriteExist= await _favoriteRepository.Where(x => x.RecipeId == recipeId && !x.IsDeleted).FirstOrDefaultAsync();
+        var user = await _userRepository.Where(u => u.Id == userId && !u.IsDeleted).FirstOrDefaultAsync();
+        var favoriteExist= await _favoriteRepository.Where(f => f.RecipeId == recipeId && !f.IsDeleted).FirstOrDefaultAsync();
         if (favoriteExist != null)
-            favoriteExist.IsDeleted = true;
+            await _favoriteRepository.RemoveAsync(favoriteExist);
 
         
         if (user is null)
@@ -38,7 +36,7 @@ public class FavoriteService:GenericService<Favorite>,IFavoriteService
         var favorite = new Favorite()
         {
             Id = Guid.NewGuid().ToString(),
-            CreatedAt = DateTime.Today,
+            CreatedAt = DateTime.Now,
             CreatedBy = userId,
             RecipeId = recipeId,
             User = user,
@@ -54,7 +52,7 @@ public class FavoriteService:GenericService<Favorite>,IFavoriteService
 
     public async Task<CustomResponseListDataDto<Favorite>> GetFavorites(string userId,int pageId)
     {
-        var user = await _userRepository.Where(x => x.Id == userId && !x.IsDeleted).FirstOrDefaultAsync();
+        var user = await _userRepository.Where(u => u.Id == userId && !u.IsDeleted).FirstOrDefaultAsync();
         if (user is null)
             CustomResponseListDataDto<Favorite>.Fail(ResponseMessages.UserNotFound, 404);
             
@@ -64,7 +62,7 @@ public class FavoriteService:GenericService<Favorite>,IFavoriteService
 
     public async Task<CustomResponseNoDataDto> DeleteUserFavorites(string userId)
     {
-        var favorites =  _favoriteRepository.Where(x => x.UserId == userId && !x.IsDeleted);
+        var favorites =  _favoriteRepository.Where(f => f.UserId == userId && !f.IsDeleted);
         if (favorites == null)
             return CustomResponseNoDataDto.Fail(404,ResponseMessages.RecipeNotFound);
         

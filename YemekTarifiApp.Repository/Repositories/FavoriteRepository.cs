@@ -15,6 +15,6 @@ public class FavoriteRepository:GenericRepository<Favorite>,IFavoriteRepository
 
     public async Task<List<Favorite?>> GetFavorites(User user,int pageId)
     {
-       return await _dbSet.Where(x=> x.UserId == user.Id).OrderBy(x => x.CreatedBy).Skip(pageId*10).Take(10).ToListAsync();
+       return await _dbSet.Where(f=> f.UserId == user.Id).OrderBy(x => x.CreatedBy).Skip((pageId-1)*10).Take(10).ToListAsync();
     }
 }

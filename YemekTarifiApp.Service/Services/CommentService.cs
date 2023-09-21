@@ -48,4 +48,69 @@ public class CommentService:GenericService<Comment>,ICommentService
         await _unitOfWork.CommitAsync();
         return CustomResponseNoDataDto.Success(200);
     }
+
+    private async Task<CustomResponseDto<Comment>> Vote(string userId, string recipeId, string commentId, string action)
+    {
+        var user = await _userAppRepository.Where(u => u.Id == userId && !u.IsDeleted).FirstOrDefaultAsync();
+        if ( user == null)
+            return CustomResponseDto<Comment>.Fail(ResponseMessages.UserNotFound,404);
+
+        var recipe = await _recipeRepository.Where(r => r.Id == recipeId && !r.IsDeleted).FirstOrDefaultAsync();
+        if (recipe == null)
+            return CustomResponseDto<Comment>.Fail(ResponseMessages.RecipeNotFound,404);
+
+        var comment = await _commentRepository.Where(c => c.RecipeId == recipeId && c.UserId == userId && c.Id==commentId && !c.IsDeleted).FirstOrDefaultAsync();
+
+        if (comment == null)
+            return CustomResponseDto<Comment>.Fail(ResponseMessages.CommentNotFound,404);
+
+        if (action == "up")
+        {
+            comment.UpVote += 1;
+        }
+        else
+        {
+            comment.DownVote += 1;
+        }
+        _commentRepository.Update(comment);
+        await _unitOfWork.CommitAsync();
+         
+        return CustomResponseDto<Comment>.Success(200);
+        
+    }
+
+    public async Task<CustomResponseDto<Comment>> UpVote(string userId, string recipeId,string commentId)
+    {
+        return await Vote(userId, recipeId, commentId,"up");
+    }
+
+    public async Task<CustomResponseDto<Comment>> DownVote(string userId, string recipeId, string commentId)
+    {
+        return await Vote(userId, recipeId, commentId,"down");
+    }
+
+    public async Task<CustomResponseNoDataDto> DeleteAllComments(string userId)
+    {
+        var comments = await _commentRepository.Where(c => c.UserId == userId && !c.IsDeleted).ToListAsync();
+
+        foreach (var comment in comments)
+        {
+            await _commentRepository.RemoveAsync(comment);
+        }
+
+        await _unitOfWork.CommitAsync();
+        return CustomResponseNoDataDto.Success(200);
+    }
+
+    public async Task<CustomResponseNoDataDto> DeleteComment(string userId, string commentId)
+    {
+        var comment = await _commentRepository.Where(c => c.UserId == userId && !c.IsDeleted).SingleOrDefaultAsync();
+        if (comment == null)
+            return CustomResponseNoDataDto.Fail(409,ResponseMessages.DuplicateEntity);
+
+        await _commentRepository.RemoveAsync(comment);
+        await _unitOfWork.CommitAsync();
+        
+        return CustomResponseNoDataDto.Success(200);
+    }
 }

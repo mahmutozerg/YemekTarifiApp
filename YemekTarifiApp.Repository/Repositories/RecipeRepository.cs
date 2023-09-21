@@ -16,7 +16,7 @@ public class RecipeRepository:GenericRepository<Recipe>,IRecipeRepository
     public async Task<List<Recipe>?> GetByCategoryNameAsync(string categoryName, string userId)
     {
         
-        return await _dbSet.Where(t => t.CategoryName == categoryName && t.UserId == userId && !t.IsDeleted)
+        return await _dbSet.Where(c => c.CategoryName == categoryName && c.UserId == userId && !c.IsDeleted)
                .AsNoTracking().ToListAsync();
          
     }

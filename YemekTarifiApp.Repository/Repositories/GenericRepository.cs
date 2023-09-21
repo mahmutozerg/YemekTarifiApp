@@ -33,12 +33,16 @@ public class GenericRepository<TEntity>:IGenericRepository<TEntity> where TEntit
 
     public void Update(TEntity? entity)
     {
+        entity.UpdatedAt = DateTime.Now;
+        entity.UpdatedBy = entity.Id;
         _dbSet.Update(entity);
     }
 
     public Task RemoveAsync(TEntity entity)
     {
         entity.IsDeleted = true;
+        entity.UpdatedAt = DateTime.Now;
+        entity.UpdatedBy = entity.Id;
         _dbSet.Update(entity);
         
         return Task.CompletedTask;

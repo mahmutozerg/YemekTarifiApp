@@ -14,26 +14,40 @@ public class RecipeService:GenericService<Recipe>,IRecipeService
     private readonly IRecipeRepository _recipeRepository;
     private readonly IUnitOfWork _unitOfWork;
     private readonly IUserAppRepository _userRepository;
+    private readonly ICommentRepository _commentRepository;
 
-    public async Task<CustomResponseListDataDto<RecipeResponseDto>> GetAllAsync(string userId)
+    public async Task<CustomResponseListDataDto<RecipeResponseDto>> GetAllUserRecipesAsync(string userId)
     {
         
-        var recipes = await _recipeRepository.Where(t=> t!.UserId == userId && !t.IsDeleted).AsNoTracking().ToListAsync();
+        var recipes = await _recipeRepository.Where(r=> r!.UserId == userId && !r.IsDeleted).AsNoTracking().ToListAsync();
         
         return CustomResponseListDataDto<RecipeResponseDto>.Success(RecipeMapper.ToResponseDtoList(recipes),200);
     }
-    public async Task<CustomResponseListDataDto<RecipeResponseDto>> GetByCategoryAsync(string listName, string userId)
+    public async Task<CustomResponseListDataDto<RecipeResponseDto>> GetUserRecipesByCategoryAsync(string listName, string userId)
     {
         
         var recipes =  await _recipeRepository.GetByCategoryNameAsync(listName,userId);
         return CustomResponseListDataDto<RecipeResponseDto>.Success(RecipeMapper.ToResponseDtoList(recipes),200);
     }
+
+    public async Task<CustomResponseListDataDto<RecipeResponseDto>> GetAll(string userId)
+    {
+        var recipes = await _recipeRepository.Where(r=> !r.IsDeleted).AsNoTracking().ToListAsync();
+        return CustomResponseListDataDto<RecipeResponseDto>.Success(RecipeMapper.ToResponseDtoList(recipes),200);
+
+    }
+
+    public async Task<CustomResponseListDataDto<RecipeResponseDto>> GetAllByCategory(string listName, string userId)
+    {
+        var recipes = await _recipeRepository.Where(r=> !r.IsDeleted && r.CategoryName == listName).AsNoTracking().ToListAsync();
+        return CustomResponseListDataDto<RecipeResponseDto>.Success(RecipeMapper.ToResponseDtoList(recipes),200);    }
     
+
     public async Task<CustomResponseDto<RecipeResponseDto>> Update(RecipeDto recipeDto, string id, string userId)
     {
 
 
-        var recipes = await _recipeRepository.Where(t => t!.UserId == userId && t.Id == id &&!t.IsDeleted).FirstOrDefaultAsync();
+        var recipes = await _recipeRepository.Where(r => r!.UserId == userId && r.Id == id &&!r.IsDeleted).FirstOrDefaultAsync();
 
         if (recipes != null)
         {
@@ -44,12 +58,13 @@ public class RecipeService:GenericService<Recipe>,IRecipeService
             return  CustomResponseDto<RecipeResponseDto>.Success(RecipeMapper.ToResponseDto(recipes),200);
 
         }
-        throw new Exception(ResponseMessages.SessionInvalidAccesRecipe);
+
+        return CustomResponseDto<RecipeResponseDto>.Fail(ResponseMessages.RecipeNotFound, 404);
     }
 
-    public async Task<CustomResponseDto<RecipeResponseDto>> CreateRecipe(RecipeDto recipeDto, string userId)
+    public async Task<CustomResponseDto<RecipeResponseDto>> CreateRecipeAsync(RecipeDto recipeDto, string userId)
     {
-        var user = await _userRepository.Where(x => x.Id == userId).FirstOrDefaultAsync();
+        var user = await _userRepository.Where(u => u.Id == userId).FirstOrDefaultAsync();
 
         if (user is null)
             return  CustomResponseDto<RecipeResponseDto>.Fail(ResponseMessages.UserNotFound,404);
@@ -74,43 +89,56 @@ public class RecipeService:GenericService<Recipe>,IRecipeService
         return  CustomResponseDto<RecipeResponseDto>.Success(RecipeMapper.ToResponseDto(recipe),200);
     }
     
-    public   async Task<CustomResponseNoDataDto> Remove(string userId, string id)
+    public   async Task<CustomResponseNoDataDto> RemoveAsync(string userId, string id)
     {
-
+        var recipe = await _recipeRepository.Where(r => r!.UserId == userId && r.Id == id && !r.IsDeleted).FirstOrDefaultAsync();
         
-        var recipe = await _recipeRepository.Where(t => t!.UserId == userId && t.Id == id && !t.IsDeleted).FirstOrDefaultAsync();
-        
-        if (recipe != null)
-        {
-            recipe.IsDeleted = true;
-            await Update(recipe);
-            return CustomResponseNoDataDto.Success(204);
-        }
+        if (recipe == null)
+            return CustomResponseNoDataDto.Fail(404,ResponseMessages.RecipeNotFound);
 
-        throw new Exception(ResponseMessages.SessionInvalidAccesRecipe);
+
+        await _recipeRepository.RemoveAsync(recipe);
+        await _unitOfWork.CommitAsync();
+        return CustomResponseNoDataDto.Success(204);
     }
 
-    public async Task<CustomResponseNoDataDto> DeleteUserRecipes(string userId)
+    public async Task<CustomResponseNoDataDto> DeleteUserAllRecipesAsync(string userId)
     {
-        var recipes =  _recipeRepository.Where(x => x.UserId == userId && !x.IsDeleted);
-        if (recipes is null)
-        {
+        var recipes =  _recipeRepository.Where(r => r.UserId == userId && !r.IsDeleted);
+        if (recipes == null)
             return CustomResponseNoDataDto.Fail(404,ResponseMessages.RecipeNotFound);
-        }
+        
         foreach (var recipe in recipes)
         {
-            recipe.IsDeleted = true;
+            await _recipeRepository.RemoveAsync(recipe);
         }
 
         await _unitOfWork.CommitAsync();
         return CustomResponseNoDataDto.Success(200);
     }
 
+    public async Task<CustomResponseNoDataDto> DeleteRecipeByIdAsync(string userId, string recipeId)
+    {
+        var recipe =  await _recipeRepository.Where(r => r.UserId == userId && !r.IsDeleted).Include(r=>r.Comments).FirstOrDefaultAsync();
+        if (recipe is null)
+            return CustomResponseNoDataDto.Fail(404,ResponseMessages.RecipeNotFound);
 
-    public RecipeService(IGenericRepository<Recipe?> repository, IUnitOfWork unitOfWork, IRecipeRepository recipeRepository, IUserAppRepository userRepository) : base(repository, unitOfWork)
+        await _recipeRepository.RemoveAsync(recipe);
+        foreach (var comment in recipe.Comments)
+        {
+            await _commentRepository.RemoveAsync(comment);
+
+        }
+        await _unitOfWork.CommitAsync();
+        return CustomResponseNoDataDto.Success(200);
+    }
+
+
+    public RecipeService(IGenericRepository<Recipe?> repository, IUnitOfWork unitOfWork, IRecipeRepository recipeRepository, IUserAppRepository userRepository, ICommentRepository commentRepository) : base(repository, unitOfWork)
     {
         _unitOfWork = unitOfWork;
         _recipeRepository = recipeRepository;
         _userRepository = userRepository;
+        _commentRepository = commentRepository;
     }
 }

@@ -19,20 +19,20 @@ public class RecipeController : CustomBaseController
     }
     
     [HttpGet("[action]")]
-    public async Task<IActionResult> GetAll()
+    public async Task<IActionResult> GetAllUserRecipes()
     {
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        var recipeResponseDto= await _recipeService.GetAllAsync(userId);
+        var recipeResponseDto= await _recipeService.GetAllUserRecipesAsync(userId);
 
         return CreateActionResult(recipeResponseDto);
 
     }
 
     [HttpGet("[action]/{categoryName}")]
-    public async Task<IActionResult> GetAllByCategory( string categoryName)
+    public async Task<IActionResult> GetAllUserRecipesByCategory( string categoryName)
     {
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        var recipeDtos = await _recipeService.GetByCategoryAsync(categoryName,userId);
+        var recipeDtos = await _recipeService.GetUserRecipesByCategoryAsync(categoryName,userId);
         
         return CreateActionResult(recipeDtos);
         
@@ -59,7 +59,7 @@ public class RecipeController : CustomBaseController
     {
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-        var createdRecipe = await _recipeService.CreateRecipe(recipeDto, userId);
+        var createdRecipe = await _recipeService.CreateRecipeAsync(recipeDto, userId);
         return CreateActionResult(createdRecipe);
 
     }
@@ -68,8 +68,32 @@ public class RecipeController : CustomBaseController
     {
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-        var removedRecipe = await _recipeService.Remove(userId, id);
+        var removedRecipe = await _recipeService.RemoveAsync(userId, id);
         return CreateActionResult(removedRecipe);
     }
+    
+    [HttpGet("[action]")]
+    public async Task<IActionResult> GetAll()
+    {
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        var recipes = await _recipeService.GetAll(userId);
+        return CreateActionResult(recipes);
 
+    }
+    
+    [HttpGet("[action]/{categoryName}")]
+    public async Task<IActionResult> GetAllByCategory(string categoryName)
+    {
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        var recipes = await _recipeService.GetAllByCategory(categoryName,userId);
+        return CreateActionResult(recipes);
+
+    }
+    
+    [HttpDelete("[action]/{recipeId}")]
+    public async Task<IActionResult> Delete(string recipeId)
+    {
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        return CreateActionResult(await _recipeService.DeleteRecipeByIdAsync(userId, recipeId));
+    }       
 }
